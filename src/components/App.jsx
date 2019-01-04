@@ -27,7 +27,7 @@ class App extends Component{
                         <li key ={reminder.id} className="list-group-item">
                         <div className="list-item">
                         <div>{reminder.text}</div>
-                        <div>{reminder.dueDate}</div>
+                        <div><em>{reminder.dueDate}</em></div>
                         </div>
                         <div className="list-item delete-button"
                         onClick ={()=>this.deleteReminder(reminder.id)}>
