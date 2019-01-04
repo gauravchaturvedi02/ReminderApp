@@ -1,24 +1,28 @@
-import React, {Component} from 'react';
 
+import React, { Component } from 'react' ;
+import '../App.css';
 class App extends Component{
-    render() {
+    render(){
         return(
             <div className ="App">
-            <div className ="title">My Tasks
-            </div>
-            <div className = "form-inline">
+            <div className ="title"> Reminder Pro </div>
+            <div className ="form-inline">
             <div className ="form-group">
             <input
             className="form-control"
-            placeholder="I hve to ..."
+            placeholder="I have to..."
             />
             </div>
             <button
-                type = "button"
-                className = "btn btn-success"
+            type="button"
+            className ="btn btn-success"
             >Add Task</button>
             </div>
             </div>
         )
     }
+
 }
+
+export default App;
+
