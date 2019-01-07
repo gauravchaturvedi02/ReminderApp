@@ -28,5 +28,5 @@ input{
 }
 .badge{
     background-color: #ef5252;
-    
+    cursor: pointer;
 }
