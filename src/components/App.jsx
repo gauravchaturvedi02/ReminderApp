@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addReminder, deleteReminder, clearReminders } from '../actions';
+import { addReminder, deleteReminder, clearReminders,removeReminder } from '../actions';
 import moment from 'moment';
 
 class App extends Component {
@@ -18,8 +18,12 @@ class App extends Component {
     deleteReminder(id) {
         this.props.deleteReminder(id)
     }
+    removeReminder(id,dueDate){
+        this.props.removeReminder(id,dueDate)
+    }
     renderReminder() {
         const { reminders } = this.props;
+        this.removeReminder(reminder.id,reminder.dueDate)
         return (
             <ul className="list-group col-sm-8">
                 {
@@ -91,4 +95,4 @@ function mapStatetoProps(state) {
         reminders: state
     }
 }
-export default connect(mapStatetoProps, { addReminder, deleteReminder ,clearReminders })(App);
+export default connect(mapStatetoProps, { addReminder, deleteReminder ,clearReminders,removeReminder })(App);

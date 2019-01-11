@@ -1,6 +1,12 @@
-import { ADD_REMINDER, DELETE_REMINDER, CLEAR_REMINDERS } from '../constants';
+import { ADD_REMINDER, DELETE_REMINDER, CLEAR_REMINDERS,REMOVE_REMINDER } from '../constants';
+
 
 export const addReminder = (text, dueDate) => {
+    let today = new Date();
+    if(dueDate < today){
+        alert("Reminder can't be set for previous dates");
+        break;
+    }
     const action = {
         type: ADD_REMINDER,
         text,
@@ -21,5 +27,13 @@ export const clearReminders = () => {
     return {
         type: CLEAR_REMINDERS
     }
+}
+export const removeReminder = (id,dueDate) =>{
+    const action = {
+        type: REMOVE_REMINDER,
+        id
+    }
+    console.log('action', action)
+    return action;
 }
 

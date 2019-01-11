@@ -1,4 +1,4 @@
-import { ADD_REMINDER, DELETE_REMINDER, CLEAR_REMINDERS } from '../constants';
+import { ADD_REMINDER, DELETE_REMINDER, CLEAR_REMINDERS, REMOVE_REMINDER } from '../constants';
 import { bake_cookie, read_cookie } from 'sfcookies';
 
 const reminder = (action) => {
@@ -16,6 +16,14 @@ const removeById = (state = [], id) => {
     return reminders;
 }
 
+const removeByDate = (state = [],id, dueDate) => {
+    let today = new Date();
+    if (dueDate < today) {
+        const reminders = state.filter(reminder => reminder.id !== id)
+        console.log(reminders);
+        return reminders;
+    }
+}
 
 const reminders = (state = [], action) => {
     let reminders = null;
@@ -36,8 +44,18 @@ const reminders = (state = [], action) => {
             bake_cookie('reminders', reminders);
             return reminders;
 
+        case REMOVE_REMINDER:
+
+            reminders = removeByDate(state,action.id, action.dueDate)
+            bake_cookie('reminders', reminders);
+            return reminders;
+
+
         default:
             return state;
+
+
+
 
     }
 
