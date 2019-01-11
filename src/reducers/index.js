@@ -28,6 +28,7 @@ const removeByDate = (state = [],id, dueDate) => {
 const reminders = (state = [], action) => {
     let reminders = null;
     state = read_cookie('reminders');
+    reminders = removeByDate(state, action.id,action.dueDate)
     switch (action.type) {
         case ADD_REMINDER:
             reminders = [...state, reminder(action)];
